@@ -1,0 +1,23 @@
+<!-- templates/movie_new.html -->
+{{ define "title" }}Создать новый фильм{{ end }}
+{{ define "content" }}
+<h1>Создать новый фильм</h1>
+{{ if .Error }}
+<p style="color: red;">{{ .Error }}</p>
+{{ end }}
+<form method="POST" action="/movies/create">
+    <label for="title">Название:</label>
+    <input type="text" id="title" name="title" value="{{ .Title }}" required>
+    <br>
+    <label for="isbn">ISBN:</label>
+    <input type="text" id="isbn" name="isbn" value="{{ .Isbn }}" required>
+    <br>
+    <label for="director_firstname">Имя режиссёра:</label>
+    <input type="text" id="director_firstname" name="director_firstname" value="{{ .DirectorFirstname }}" required>
+    <br>
+    <label for="director_lastname">Фамилия режиссёра:</label>
+    <input type="text" id="director_lastname" name="director_lastname" value="{{ .DirectorLastname }}" required>
+    <br>
+    <button type="submit">Создать</button>
+</form>
+{{ end }}

@@ -1,0 +1,12 @@
+<!-- templates/movie_details.html -->
+{{define "title"}}{{.Title}}{{end}}
+{{define "content"}}
+<h1>{{.Title}}</h1>
+<p><strong>ISBN:</strong> {{.Isbn}}</p>
+<p><strong>Режиссер:</strong> {{.Director.Firstname}} {{.Director.Lastname}}</p>
+<a href="/movies/{{.ID}}/edit">Редактировать</a>
+<form action="/api/movies/{{.ID}}" method="POST" onsubmit="return confirm('Вы уверены, что хотите удалить этот фильм?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <button type="submit">Удалить</button>
+</form>
+{{end}}

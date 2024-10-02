@@ -1,0 +1,23 @@
+<!-- templates/movie_edit.html -->
+{{ define "title" }}Редактировать фильм{{ end }}
+{{ define "content" }}
+<h1>Редактировать фильм</h1>
+{{ if .Error }}
+<p style="color: red;">{{ .Error }}</p>
+{{ end }}
+<form method="POST" action="/movies/{{ .Movie.ID }}/edit">
+    <label for="title">Название:</label>
+    <input type="text" id="title" name="title" value="{{ .Movie.Title }}" required>
+    <br>
+    <label for="isbn">ISBN:</label>
+    <input type="text" id="isbn" name="isbn" value="{{ .Movie.Isbn }}" required>
+    <br>
+    <label for="director_firstname">Имя режиссёра:</label>
+    <input type="text" id="director_firstname" name="director_firstname" value="{{ .DirectorFirstname }}" required>
+    <br>
+    <label for="director_lastname">Фамилия режиссёра:</label>
+    <input type="text" id="director_lastname" name="director_lastname" value="{{ .DirectorLastname }}" required>
+    <br>
+    <button type="submit">Сохранить</button>
+</form>
+{{ end }}

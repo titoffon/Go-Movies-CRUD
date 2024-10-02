@@ -1,0 +1,16 @@
+<!-- templates/movies.html -->
+{{ define "title" }}Список фильмов 2{{ end }}
+{{ define "content" }}
+<h1>Список фильмов </h1>
+<ul>
+    {{ range .Movies }}
+    <li>
+        <a href="/movies/{{ .ID }}">{{ .Title }}</a> - Режиссёр: {{ .Director.Firstname }} {{ .Director.Lastname }}
+        - <a href="/movies/{{ .ID }}/edit">Редактировать</a>
+    </li>
+    {{ else }}
+    <li>Фильмы не найдены.</li>
+    {{ end }}
+</ul>
+<p><a href="/movies/create">Добавить новый фильм</a></p>
+{{ end }}

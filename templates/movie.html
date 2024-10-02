@@ -1,0 +1,17 @@
+<!-- templates/movie.html -->
+{{ define "title" }}{{ .Movie.Title }}{{ end }}
+{{ define "content" }}
+<h1>{{ .Movie.Title }}</h1>
+<p><strong>ISBN:</strong> {{ .Movie.Isbn }}</p>
+<p><strong>Режиссёр:</strong> {{ .Movie.Director.Firstname }} {{ .Movie.Director.Lastname }}</p>
+<p>
+    <form method="GET" action="/movies/{{ .Movie.ID }}/edit" style="display: inline;">
+        <button type="submit" >Редактировать</button>
+    </form>
+    <!--<a href="/movies/{{ .Movie.ID }}/edit">Редактировать</a> |-->
+    <form method="POST" action="/movies/{{ .Movie.ID }}/delete" style="display: inline;">
+        <button type="submit" onclick="return confirm('Вы уверены, что хотите удалить этот фильм?');">Удалить</button>
+    </form>
+</p>
+<p><a href="/movies">Вернуться к списку фильмов</a></p>
+{{ end }}
